@@ -161,7 +161,7 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 20
+vim.o.scrolloff = 15
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -308,10 +308,9 @@ require('lazy').setup({
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
+      auto_restore = true,
+      auto_save = true,
       suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-      auto_restore_enabled = true,
-      auto_save_enabled = true,
-      -- log_level = 'debug',
     },
   },
 
@@ -494,9 +493,9 @@ require('lazy').setup({
   },
 
   -- LSP Plugins
-  {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
+    {
     'folke/lazydev.nvim',
     ft = 'lua',
     opts = {
@@ -702,9 +701,10 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
-        pyright = {},
+        -- pyright = {},
+
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -712,7 +712,8 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        -- ts_ls = {},
+        -- tailwindcss = {},
         --
 
         lua_ls = {
@@ -931,7 +932,7 @@ require('lazy').setup({
       vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
-
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
