@@ -93,7 +93,7 @@ vim.g.maplocalleader = ' '
 --  Kickstart.nvim is *not* a distribution.
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -493,9 +493,9 @@ require('lazy').setup({
   },
 
   -- LSP Plugins
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
-    {
+  -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+  -- used for completion, annotations and signatures of Neovim apis
+  {
     'folke/lazydev.nvim',
     ft = 'lua',
     opts = {
